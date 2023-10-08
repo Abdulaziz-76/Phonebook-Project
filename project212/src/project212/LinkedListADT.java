@@ -1,5 +1,7 @@
 package project212;
 
-public class LinkedListADT {
+public class LinkedListADT  {
+	private Node head;
+	
 
 }
