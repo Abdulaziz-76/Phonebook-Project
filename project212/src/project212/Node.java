@@ -1,20 +1,31 @@
 package project212;
 
-public class Node {
-	private Contact data;
-	private Node next;
-	public Contact getData() {
+public class Node<T> {
+	private T data;
+	private Node<T> next;
+
+	public Node() {
+
+	}
+
+	public Node(T d) {
+		this.data = d;
+
+	}
+
+	public T getData() {
 		return data;
 	}
-	public void setData(Contact data) {
+
+	public void setData(T data) {
 		this.data = data;
 	}
-	public Node getNext() {
+
+	public Node<T> getNext() {
 		return next;
 	}
-	public void setNext(Node next) {
+
+	public void setNext(Node<T> next) {
 		this.next = next;
 	}
-	
-
 }
