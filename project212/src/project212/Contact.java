@@ -1,5 +1,7 @@
 package project212;
 
+import java.util.Scanner;
+
 public class Contact implements Comparable<String> {
 
 	private String contact_name;
@@ -9,8 +11,8 @@ public class Contact implements Comparable<String> {
 	private String phone_number;
 	private String birthday;
 
-	public Contact(String contact_name, String email, String address, String notes, String phone_number,
-			String birthday) {
+	public Contact(String contact_name, String phone_number, String email, String address, String birthday,
+			String notes) {
 
 		this.contact_name = contact_name;
 		this.email = email;
@@ -23,15 +25,11 @@ public class Contact implements Comparable<String> {
 	public Contact(Contact c) {
 
 		this.contact_name = c.contact_name;
+		this.phone_number = c.phone_number;
 		this.email = c.email;
 		this.address = c.address;
-		this.notes = c.notes;
-		this.phone_number = c.phone_number;
 		this.birthday = c.birthday;
-	}
-
-	public Contact() {
-
+		this.notes = c.notes;
 	}
 
 	public String getContact_name() {
@@ -40,6 +38,14 @@ public class Contact implements Comparable<String> {
 
 	public void setContact_name(String contact_name) {
 		this.contact_name = contact_name;
+	}
+	
+	public String getPhone_number() {
+		return phone_number;
+	}
+
+	public void setPhone_number(String phone_number) {
+		this.phone_number = phone_number;
 	}
 
 	public String getEmail() {
@@ -57,6 +63,14 @@ public class Contact implements Comparable<String> {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
 
 	public String getNotes() {
 		return notes;
@@ -66,21 +80,12 @@ public class Contact implements Comparable<String> {
 		this.notes = notes;
 	}
 
-	public String getPhone_number() {
-		return phone_number;
+
+	public Contact() {
+
 	}
 
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
-	}
-
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
+	
 
 	public int compareTo(String s) {
 		return contact_name.compareToIgnoreCase(s);
@@ -91,11 +96,11 @@ public class Contact implements Comparable<String> {
 		return contact_name.compareTo(r.contact_name);
 
 	}
-
 	@Override
 	public String toString() {
-		return "contact [contact_name=" + contact_name + ", email=" + email + ", address=" + address + ", notes="
-				+ notes + ", phone_number=" + phone_number + ", birthday=" + birthday + "]";
+		return "Name:" + contact_name + "\nPhone Number:"+phone_number +"\nEmail Address:"+ email+"\nAddress:"+ address+"\nBirthday:"+birthday+"\nNotes:"+notes;
 	}
-
+	
+	
+	
 }

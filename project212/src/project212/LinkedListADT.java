@@ -1,6 +1,6 @@
 package project212;
 
-public class LinkedListADT<T>  {
+public class LinkedListADT<T> {
 
 	private Node<T> head;
 	private Node<T> current;
@@ -34,7 +34,7 @@ public class LinkedListADT<T>  {
 			else {
 				Node<T> r = head;
 				while (r != null && (((Contact) r.getData()).compareTo((Contact) newNode.getData()) < 0)) {
-					current = r;
+					current = (Node<T>) r.getData();
 					r = r.getNext();
 				}
 
@@ -47,17 +47,46 @@ public class LinkedListADT<T>  {
 
 	}
 
+	public Node search(String X) {
+		if (head == null)
+			return null;
+		Node r = head;
+		while (r!= null && ((Contact)r.getData()).compareTo(X) != 0) {
+			r = r.getNext();
+		}
+		if (r == null)
+			return null;
+		
+		return r;
+
+	}
+
+	/*public boolean search(T X) {
+		if (head == null)
+			return false;
+
+		Node<T> r = head;
+		while (r!= null && (((Contact)r.getData()).compareTo((Contact) X) != 0))
+			r = r.getNext();
+		if ((r != null) && (((Contact)r.getData()).compareTo((Contact) X) == 0)) {
+			System.out.println(r.getData().toString());
+			 current =  r;
+			return true;
+		}
+		return false;
+	}
+*/
 	public void printAll() {
 		Node<T> p = head;
 		while (p != null) {
-			System.out.print(p.getData().toString() + "    ");
+			System.out.print(p.getData().toString());
 			p = p.getNext();
 		}
 		System.out.println("");
 	}
 
-	
+	public Node<Contact> getCurrent() {
+		return (Node<Contact>) current;
+	}
+
 }
-	
-
-
