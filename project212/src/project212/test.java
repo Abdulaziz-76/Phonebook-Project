@@ -10,6 +10,7 @@ public class test {
 		Scanner input = new Scanner(System.in);
 		Phonebook ph = new Phonebook();
 		System.out.println("Welcome to the Linked Tree Phonebook!");
+		
 		do {
 		System.out.println("Please choose an option:"); 
 		System.out.println("1. Add a contact");
@@ -21,7 +22,11 @@ public class test {
 		System.out.println("7. Print all events alphabetically");
 		System.out.println("8. Exit");
 		System.out.println("Enter your choice:");
+		
+		try {
 		 num = input.nextInt();
+		
+		
 		switch(num) {
 		case 1:
 			ph.add_contact(input);
@@ -30,12 +35,15 @@ public class test {
 			ph.searchCo(input);
 			break;
 		case 3:
+			ph.deleteContact();
 			
 			break;
 		case 4:
-			
+			ph.Schedule(input);
+		
 			break;
 		case 5:
+			
 			
 			break;
 		case 6:
@@ -49,25 +57,15 @@ public class test {
 			break;
 			
 		default:
-			
+			System.out.println("Choose a number from 1-8");
+		}
+		}catch(Exception x) {
+			System.err.println("only integers number from 1-8");
+			 input.nextLine();
 		}
 		}while(num!=8);
 		
-	/*	
-		Contact c1 = new Contact("Sami", "asf", "r", "er", "erq", "qe");
-		Contact c2 = new Contact("Abdullah", "asf", "r", "er", "erq", "qe");
-		Contact c3 = new Contact("", "asf", "r", "er", "erq", "qe");
-		Contact c4 = new Contact("YasBaderser", "asf", "r", "er", "erq", "qe");
-		
-		l1.insert(c4);
-		l1.insert(c2);
-
-		l1.insert(c3);
-		l1.insert(c1);
-
-		l1.printAll();
-	*/
-		//l1.printAll();
 	}
-
 }
+	
+

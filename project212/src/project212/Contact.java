@@ -85,9 +85,16 @@ public class Contact implements Comparable<String> {
 
 	}
 
+	public boolean compare(String x) {
+		if(x.equalsIgnoreCase(contact_name)||x.equalsIgnoreCase(phone_number)||x.equalsIgnoreCase(email)||x.equalsIgnoreCase(birthday))
+			return true;
+		
+		return false;
+	}
 	
 
 	public int compareTo(String s) {
+		
 		return contact_name.compareToIgnoreCase(s);
 
 	}
