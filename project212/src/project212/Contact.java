@@ -2,7 +2,7 @@ package project212;
 
 import java.util.Scanner;
 
-public class Contact implements Comparable<String> {
+public class Contact implements Comparable<Contact> {
 
 	private String contact_name;
 	private String email;
@@ -10,7 +10,7 @@ public class Contact implements Comparable<String> {
 	private String notes;
 	private String phone_number;
 	private String birthday;
-
+	
 	public Contact(String contact_name, String phone_number, String email, String address, String birthday,
 			String notes) {
 
@@ -30,6 +30,14 @@ public class Contact implements Comparable<String> {
 		this.address = c.address;
 		this.birthday = c.birthday;
 		this.notes = c.notes;
+	}
+	public Contact() {
+		this.contact_name = "";
+		this.email = "";
+		this.address = "";
+		this.notes = "";
+		this.phone_number = "";
+		this.birthday = "";
 	}
 
 	public String getContact_name() {
@@ -79,25 +87,15 @@ public class Contact implements Comparable<String> {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-
-
-	public Contact() {
-
-	}
-
-	public boolean compare(String x) {
-		if(x.equalsIgnoreCase(contact_name)||x.equalsIgnoreCase(phone_number)||x.equalsIgnoreCase(email)||x.equalsIgnoreCase(birthday))
-			return true;
-		
-		return false;
-	}
 	
 
-	public int compareTo(String s) {
-		
-		return contact_name.compareToIgnoreCase(s);
+	
 
-	}
+	//public int compareTo(String s) {
+		
+	//	return contact_name.compareToIgnoreCase(s);
+
+	//}
 
 	public int compareTo(Contact r) {
 		return contact_name.compareTo(r.contact_name);

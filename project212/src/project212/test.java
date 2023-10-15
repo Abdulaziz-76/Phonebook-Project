@@ -23,7 +23,7 @@ public class test {
 		System.out.println("8. Exit");
 		System.out.println("Enter your choice:");
 		
-		try {
+		//try {
 		 num = input.nextInt();
 		
 		
@@ -32,7 +32,7 @@ public class test {
 			ph.add_contact(input);
 			break;
 		case 2:
-			ph.searchCo(input);
+			ph.search_Contact(input);
 			break;
 		case 3:
 			ph.deleteContact();
@@ -43,14 +43,14 @@ public class test {
 		
 			break;
 		case 5:
-			
+			ph.searchEvent(input);
 			
 			break;
 		case 6:
-			ph.ln.printAll();
+			ph.printBy_firstName(input);
 			break;
 		case 7:
-			
+			ph.lnEvent.printAll();
 			break;
 		case 8:
 			
@@ -59,10 +59,10 @@ public class test {
 		default:
 			System.out.println("Choose a number from 1-8");
 		}
-		}catch(Exception x) {
-			System.err.println("only integers number from 1-8");
-			 input.nextLine();
-		}
+		//}catch(Exception x) {
+		//	System.err.println("only integers number from 1-8");
+		//	 input.nextLine();
+		//}
 		}while(num!=8);
 		
 	}

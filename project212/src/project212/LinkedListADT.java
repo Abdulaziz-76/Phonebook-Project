@@ -1,6 +1,8 @@
 package project212;
 
-public class LinkedListADT<T> {
+import java.util.Scanner;
+
+public class LinkedListADT<T extends Comparable<T>> {
 
 	private Node<T> head;
 	private Node<T> current;
@@ -18,6 +20,11 @@ public class LinkedListADT<T> {
 	public boolean empty() {
 		return head == null;
 	}
+	
+	
+	
+	
+	
 
 	public void insert(T d) {
 		Node<T> newNode = new Node<T>(d);
@@ -25,7 +32,7 @@ public class LinkedListADT<T> {
 			head = newNode;
 
 		else {
-			if (((Contact) head.getData()).compareTo((Contact) newNode.getData()) > 0) {
+			if (( head.getData()).compareTo( newNode.getData()) > 0) {
 				newNode.setNext(head);
 				head = newNode;
 				return;
@@ -33,7 +40,7 @@ public class LinkedListADT<T> {
 
 			else {
 				Node<T> r = head;
-				while (r != null && (((Contact) r.getData()).compareTo((Contact) newNode.getData()) < 0)) {
+				while (r != null && (( r.getData()).compareTo( newNode.getData()) < 0)) {
 					current = r;
 					r = r.getNext();
 				}
@@ -46,11 +53,18 @@ public class LinkedListADT<T> {
 		}
 
 	}
+	
+	
+	
+	
+	
+	
+	
 	public Node<T> search_NAME(String name) {
 		if (head == null)
 			return null;
 		Node<T> r = head;
-		while (r!= null && !((Contact)r.getData()).getContact_name().equalsIgnoreCase(name)) {
+		while (r!= null && ((Contact)r.getData()).getContact_name().compareTo(name)!=0) {
 			current=r;
 			r = r.getNext();
 		}
@@ -70,7 +84,7 @@ public class LinkedListADT<T> {
 		return r;
 	}
 	public boolean search_EMAIL(String email) {
-		int count=0;
+		
 		if (head == null)
 			return false;
 		Node<T> r = head;
@@ -78,12 +92,12 @@ public class LinkedListADT<T> {
 			if(((Contact)r.getData()).getEmail().equalsIgnoreCase(email)) {
 				System.out.println("\nContact found!");
 				System.out.println(r.getData().toString());
-				count++;
+				
 			}
 			r = r.getNext();
 		}
 		
-		return count==0;
+		return r==null;
 	}
 	
 	public boolean search_ADDRES(String addres) {
@@ -119,19 +133,42 @@ public class LinkedListADT<T> {
 		return count==0;
 	}
 	
-	
-	/*
-	public Node search(String name) {
-		if (head == null)
+	public Node<T> search_Event_name(String name) {
+		if(head==null)
 			return null;
-		Node r = head;
-		while (r!= null && !((Contact)r.getData()).compare(name)) {
+		Node<T> r = head;
+			while(r!=null&&!(((Event)r.getData()).comperName(name))) {
+				current=r;
 			r = r.getNext();
-		}
-		
+			}
 		return r;
-
-	}*/
+	}
+	
+	public Node<T> search_Event_date(String date) {
+		if(head==null)
+			return null;
+		Node<T> r = head;
+			while(r!=null&&!(((Event)r.getData()).comperDate(date))) {
+				current=r;
+			r = r.getNext();
+			}
+		return r;
+	}
+	
+	public Node<T> search_Event_title(String title) {
+		if(head==null)
+			return null;
+		Node<T> r = head;
+			while(r!=null&&!(((Event)r.getData()).getTitle().equalsIgnoreCase(title))) {
+				current=r;
+			r = r.getNext();
+			}
+		return r;
+	}
+	
+	
+	
+	
 	public boolean delete(String name) {
 		Node<T> r =search_NAME(name);
 		if(r==head) {
@@ -146,13 +183,74 @@ public class LinkedListADT<T> {
 		return false;
 	
 	}
+	public void printByName(String name) {
+		
+		if (head == null)
+			System.out.println("There's no Event to this Contact");
+		Node<T> r = head;
+		while (r!= null) {
+			if(((Event)r.getData()).comperName(name)) {
+				System.out.println("\nEvent found!");
+				System.out.println(r.getData().toString());
+			}
+				r = r.getNext();
+			}
+			
+		}
+	
+	public void printByTitle(String title) {
+		
+		if (head == null)
+			System.out.println("There's no Event to this Contact");
+		Node<T> r = head;
+		while (r!= null) {
+			if(((Event)r.getData()).getTitle().equalsIgnoreCase(title)) {
+				
+				System.out.println("\nEvent found!");
+				System.out.println(r.getData().toString());
+			}
+				r = r.getNext();
+			}
+		
+		
+	}
+		
+		
+	
 	public void printAll() {
-		Node<T> p = head;
-		while (p != null) {
-			System.out.print(p.getData().toString());
-			p = p.getNext();
+		Node<T> r = head;
+		while (r != null) {
+			System.out.print(r.getData().toString());
+			r = r.getNext();
 		}
 		System.out.println("");
 	}
-
+	
+	public void printfirstName(String name) {
+		if (head == null)
+			System.out.println("There's no Contact have this name");
+		Node<T> r = head;
+		while (r!= null) {
+				int x=0;
+				String n="";
+				String s=((Contact)r.getData()).getContact_name();
+			
+				while(x<=s.length()-1 &&s.charAt(x)!=' ') {
+					n+=s.charAt(x++);
+				
+				if(n.equalsIgnoreCase(name)) {
+				System.out.println("\nEvent found!");
+				System.out.println(r.getData().toString());
+				
+				
+				}
+				
+				}
+				r = r.getNext();
+		}
+	}
+	
 }
+
+
+

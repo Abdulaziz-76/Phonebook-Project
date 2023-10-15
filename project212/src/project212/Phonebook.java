@@ -7,19 +7,29 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class Phonebook {
-	LinkedListADT<Contact> ln = new LinkedListADT<Contact>();
-	String input2 = "", input3 = "", input4 = "", input5 = "", input6 = "", input1 = "";
+	LinkedListADT<Contact> lnContact;
+	LinkedListADT<Event> lnEvent;
+	String input2, input3, input4, input5, input6, input1;
+
+	public Phonebook() {
+		lnContact = new LinkedListADT<Contact>();
+		lnEvent = new LinkedListADT<Event>();
+
+	}
 
 	public void add_contact(Scanner in) {
 		int count = 0;
 
 		in.nextLine();
+		
 		do {
 			System.out.println("Enter the contact's name:");
 			input1 = in.nextLine();
-			if (ln.search_NAME(input1) != null)
+			
+			if (lnContact.search_NAME(input1) != null)
 				System.out.println("Contact already exists");///////////////// Aziz == Az i z?
-		} while (ln.search_NAME(input1) != null);
+			
+		} while (lnContact.search_NAME(input1) != null);
 
 		do {
 			System.out.println("Enter the contact's phone number:");
@@ -63,12 +73,12 @@ public class Phonebook {
 		System.out.println("Enter any notes for the contact:");
 		input6 = in.nextLine();
 
-		ln.insert(new Contact(input1, input2, input3, input4, input5, input6));
+		lnContact.insert(new Contact(input1, input2, input3, input4, input5, input6));
 		System.out.println("Contact added successfully!");
 
 	}
 
-	public void searchCo(Scanner in) {
+	public void search_Contact(Scanner in) {
 		System.out.println("Enter search criteria:");
 		System.out.println("1. Name");
 		System.out.println("2. Phone Number");
@@ -76,194 +86,238 @@ public class Phonebook {
 		System.out.println("4. Address");
 		System.out.println("5. Birthday");
 		System.out.println("Enter your choice:");
-		int num=0;
+		int num = 0;
 		try {
-			
-		 num = in.nextInt();
-		
-		switch (num) {
 
-		case 1:
+			num = in.nextInt();
 
-			System.out.println("Enter the contact's name:");
-			in.nextLine();
-			input1 = in.nextLine();
-			Contact c1 = null;
-			try {
-				c1 = (Contact) ln.search_NAME(input1).getData();
-			} catch (Exception x) {
-				System.err.println("Contact not found!");
+			switch (num) {
+
+			case 1:
+
+				System.out.println("Enter the contact's name:");
+				in.nextLine();
+				input1 = in.nextLine();
+				Contact c1 = null;
+				try {
+					c1 = (Contact) lnContact.search_NAME(input1).getData();
+				} catch (Exception x) {
+					System.err.println("Contact not found!");
+				}
+
+				if (c1 != null) {
+					System.out.println("Contact found!");
+					System.out.println(c1.toString());
+				}
+				break;
+
+			case 2:
+
+				System.out.println("Enter the contact's Phone Number:");
+				input2 = in.nextLine();
+				input2 = in.nextLine();
+
+				Contact c2 = null;
+				try {
+					c2 = (Contact) lnContact.search_PHONE(input2).getData();
+				} catch (Exception x) {
+					System.err.println("Contact not found!");
+				}
+
+				if (c2 != null) {
+					System.out.println("Contact found!");
+					System.out.println(c2.toString());
+				}
+				break;
+
+			case 3:
+
+				System.out.println("Enter the contact's Email Address:");
+				in.nextLine();
+				input3 = in.nextLine();
+
+				if (!lnContact.search_EMAIL(input3)) {
+					System.err.println("Contact not found!");
+				}
+
+				break;
+
+			case 4:
+
+				System.out.println("Enter the contact's Address:");
+				input4 = in.nextLine();
+				input4 = in.nextLine();
+
+				if (!lnContact.search_ADDRES(input4)) {
+					System.err.println("Contact not found!");
+				}
+				break;
+
+			case 5:
+
+				System.out.println("Enter the contact's Birthday:");
+				input5 = in.nextLine();
+				input5 = in.nextLine();
+
+				if (!lnContact.search_BIRTHDAY(input5)) {
+					System.err.println("Contact not found!");
+				}
+				break;
+
+			default:
+				System.out.println("Choose a number from 1-5");
+
 			}
-
-			if (c1 != null) {
-				System.out.println("Contact found!");
-				System.out.println(c1.toString());
-			}
-			break;
-
-		case 2:
-
-			System.out.println("Enter the contact's Phone Number:");
-			input2 = in.nextLine();
-			input2 = in.nextLine();
-
-			Contact c2 = null;
-			try {
-				c2 = (Contact) ln.search_PHONE(input2).getData();
-			} catch (Exception x) {
-				System.err.println("Contact not found!");
-			}
-
-			if (c2 != null) {
-				System.out.println("Contact found!");
-				System.out.println(c2.toString());
-			}
-			break;
-
-		case 3:
-
-			System.out.println("Enter the contact's Email Address:");
-			in.nextLine();
-			input3 = in.nextLine();
-			
-			if(!ln.search_EMAIL(input3)) {
-				System.err.println("Contact not found!");
-			}
-			
-			break;
-
-		case 4:
-
-			System.out.println("Enter the contact's Address:");
-			input4 = in.nextLine();
-			input4 = in.nextLine();
-
-			if(!ln.search_ADDRES(input4)) {
-				System.err.println("Contact not found!");
-			}
-			break;
-
-		case 5:
-
-			System.out.println("Enter the contact's Birthday:");
-			input5 = in.nextLine();
-			input5 = in.nextLine();
-			
-			if(!ln.search_BIRTHDAY(input5)) {
-				System.err.println("Contact not found!");
-			}
-			break;
-
-		default:
-			System.out.println("Choose a number from 1-5");
-
-		}
-		}catch(Exception x) {
+		} catch (Exception x) {
 			System.err.println("only integers number from 1-5");
-			 in.nextLine();
+			in.nextLine();
 		}
 	}
-	
+
 	public void deleteContact() {
-		Scanner in =new Scanner(System.in);
+		Scanner in = new Scanner(System.in);
 		System.out.println("contact name to delete");
-		
-		String inputo=in.nextLine();
-		if(ln.delete(inputo)) {
+
+		String inputo = in.nextLine();
+		if (lnContact.delete(inputo)) {
 			System.out.println("Successfully delete");
-			
+
 		}
-		
+
 		else
 			System.out.println("Not found");
-		
-		
+
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	public void Schedule(Scanner in) {
 		System.out.println("Enter event title:");
 		in.nextLine();
-		input1=in.nextLine();
+		input1 = in.nextLine();
+
 		System.out.println("Enter contact name:");
-		input2=in.nextLine();
-		System.out.print("Enter event date and time (MM/DD/YYYY HH:MM): ");
-        String dateTimeInput = in.nextLine();  
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-            Date eventDate = dateFormat.parse(dateTimeInput);
-          
-            
-        } catch (Exception e) {
-            System.err.println("Invalid date and time format. Please use MM/DD/YYYY HH:MM.");
-        }
-        
-		System.out.println("Enter event location:");
-		input3=in.nextLine();
-		Contact r=null;
-		try {
-		 r=ln.search_NAME(input2).getData();
-		}catch(Exception x) {
+		input2 = in.nextLine();
+		if (lnContact.search_NAME(input2) == null) {
 			System.out.println("Contact not found!");
 		}
-		Event e1 =new Event(input1,dateTimeInput,input3,(Contact)r);
 		
+		else {
+			String dateTimeInput=null;
+			int x;
+			do {
+			 x=0;
+			System.out.print("Enter event date and time (MM/DD/YYYY HH:MM): ");
+			 dateTimeInput = in.nextLine();
+			
+			try {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+				Date eventDate = dateFormat.parse(dateTimeInput);
+				
+			} catch (Exception e) {
+				System.err.println("Invalid date and time format. Please use MM/DD/YYYY HH:MM.");
+				x=1;
+			}
+			}while(x==1);
+			
+			if(lnEvent.search_Event_name(input2)!=null && lnEvent.search_Event_date(dateTimeInput)!=null)
+				System.out.println("There is an Event on the same time");
+			
+			
+				else {
+					System.out.println("Enter event location:");
+					input3 = in.nextLine();
+					
+				
+					lnEvent.insert((new Event(input1, dateTimeInput, input3,(Contact) lnContact.search_NAME(input2).getData())));
+					System.out.println("Event scheduled successfully!");
+			}
+		}
 	}
-	public void searchEvent(Scanner in) {	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	public void searchEvent(Scanner in) {
 		System.out.println("Enter search criteria:");
 		System.out.println("1. contact name");
 		System.out.println("2. Event tittle");
-		int num=0;
+		int num = 0;
 		try {
-			
-		 num = in.nextInt();
-		
-		switch (num) {
 
-		case 1:
+			num = in.nextInt();
 
-			System.out.println("Enter the contact's name:");
+			switch (num) {
+
+			case 1:
+
+				System.out.println("Enter the contact's name:");
+				in.nextLine();
+				input1 = in.nextLine();
+				Contact c1 = null;
+				try {
+					c1 =(Contact) lnContact.search_NAME(input1).getData();
+				} catch (Exception x) {
+					System.err.println("Event not found!");
+				}
+
+				if (c1!=null) {
+					lnEvent.printByName(c1.getContact_name());
+				}
+				
+				break;
+
+			case 2:
+
+				System.out.println("Enter the event title:");
+				input2 = in.nextLine();
+				input2 = in.nextLine();
+
+				Event e2 = null;
+				try {
+					e2 = (Event)lnEvent.search_Event_title(input2).getData();
+				} catch (Exception x) {
+					System.err.println("Event not found!");
+				}
+
+				if (e2 != null) {
+					System.out.println("Event found!");
+					lnEvent.printByTitle(input2);
+				}
+				break;
+
+			default:
+				System.out.println("Choose a number from 1-2");
+
+			}
+		} catch (Exception x) {
+			System.err.println("only integers number from 1-2");
 			in.nextLine();
-			input1 = in.nextLine();
-			Contact c1 = null;
-			try {
-				c1 = (Contact) ln.search_NAME(input1).getData();
-			} catch (Exception x) {
-				System.err.println("Contact not found!");
-			}
-
-			if (c1 != null) {
-				System.out.println("Contact found!");
-				System.out.println(c1.toString());
-			}
-			break;
-
-		case 2:
-
-			System.out.println("Enter the event title:");
-			input2 = in.nextLine();
-			input2 = in.nextLine();
-
-			Contact c2 = null;
-			try {
-				c2 = (Contact) ln.search_PHONE(input2).getData();
-			} catch (Exception x) {
-				System.err.println("Contact not found!");
-			}
-
-			if (c2 != null) {
-				System.out.println("Contact found!");
-				System.out.println(c2.toString());
-			}
-			break;
-
-		default:
-			System.out.println("Choose a number from 1-5");
-
 		}
-		}catch(Exception x) {
-			System.err.println("only integers number from 1-5");
-			 in.nextLine();
-		}
+
+	}
+	public void printBy_firstName(Scanner in) {
+		System.out.println("Enter the first name:");
+		input1=in.next();
+		lnContact.printfirstName(input1);
+		
 		
 	}
-	
+
 }
