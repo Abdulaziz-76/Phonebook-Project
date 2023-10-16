@@ -22,10 +22,6 @@ public class LinkedListADT<T extends Comparable<T>> {
 	}
 	
 	
-	
-	
-	
-
 	public void insert(T val) {
 		Node<T> newNode = new Node<T>(val);
 		if (isempty())
@@ -55,11 +51,7 @@ public class LinkedListADT<T extends Comparable<T>> {
 	}
 	
 	
-	
-	
-	
-	
-	
+
 	public Node<T> search_NAME(String name) {
 		if (isempty())
 			return null;
@@ -100,7 +92,7 @@ public class LinkedListADT<T extends Comparable<T>> {
 		return temp==null;
 	}
 	
-	public boolean search_ADDRES(String addres) {
+	public boolean search_ADDRESS(String addres) {
 		int count=0;
 		if (isempty())
 			return false;
@@ -168,7 +160,6 @@ public class LinkedListADT<T extends Comparable<T>> {
 	
 	
 	
-	
 	public boolean delete(Node n) {
 		
 		if(n==head) {
@@ -187,7 +178,7 @@ public class LinkedListADT<T extends Comparable<T>> {
 	public void printByName(String name) {
 		
 		if (isempty())
-			System.out.println("There's no Event to this Contact");
+			System.out.println("There's no Event for this Contact");
 		Node<T> temp = head;
 		while (temp!= null) {
 			if(((Event)temp.getData()).comperName(name)) {
@@ -202,7 +193,7 @@ public class LinkedListADT<T extends Comparable<T>> {
 	public void printByTitle(String title) {
 		
 		if (isempty())
-			System.out.println("There's no Event to this Contact");
+			System.out.println("There's no Event for this Contact");
 		Node<T> temp = head;
 		while (temp!= null) {
 			if(((Event)temp.getData()).getTitle().equalsIgnoreCase(title)) {
@@ -224,12 +215,12 @@ public class LinkedListADT<T extends Comparable<T>> {
 			System.out.print(r.getData().toString());
 			r = r.getNext();
 		}
-		System.out.println("");
+		System.out.println("There's no event");
 	}
 	
 	public void printfirstName(String name) {
 		if (isempty())
-			System.out.println("There's no Contact have this name");
+			System.out.println("There's no Contact with this name");
 		Node<T> temp = head;
 		while (temp!= null) {
 				int x=0;

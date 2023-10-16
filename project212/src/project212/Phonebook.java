@@ -155,7 +155,7 @@ public class Phonebook {
 				input4 = in.nextLine();
 				input4 = in.nextLine();
 
-				if (!lnContact.search_ADDRES(input4)) {
+				if (!lnContact.search_ADDRESS(input4)) {
 					System.err.println("Contact not found!");
 				}
 				break;
@@ -184,12 +184,6 @@ public class Phonebook {
 	
 	
 	
-	
-	
-	
-	
-	
-
 	public void deleteContact() {
 		Scanner in = new Scanner(System.in);
 		System.out.println("contact name to delete");
@@ -211,15 +205,6 @@ public class Phonebook {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	public void Schedule(Scanner in) {
 		System.out.println("Enter event title:");
 		in.nextLine();
@@ -250,7 +235,7 @@ public class Phonebook {
 			}while(x==1);
 			
 			if(lnEvent.search_Event_name(input2)!=null && lnEvent.search_Event_date(dateTimeInput)!=null)
-				System.out.println("There is an Event on the same time");
+				System.out.println("There is an Event at the same time");
 			
 			
 				else {
@@ -263,13 +248,6 @@ public class Phonebook {
 			}
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

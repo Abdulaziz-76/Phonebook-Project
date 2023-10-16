@@ -89,8 +89,6 @@ public class Contact implements Comparable<Contact> {
 	}
 	
 
-	
-
 	public int compareTo(Contact r) {
 		return contact_name.compareToIgnoreCase(r.contact_name);
 

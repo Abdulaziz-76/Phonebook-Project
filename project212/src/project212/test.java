@@ -28,33 +28,39 @@ public class test {
 		
 		
 		switch(num) {
+		
 		case 1:
 			ph.add_contact(input);
 			break;
+			
 		case 2:
 			ph.search_Contact(input);
 			break;
+			
 		case 3:
 			ph.deleteContact();
-			
 			break;
+			
 		case 4:
 			ph.Schedule(input);
-		
 			break;
+			
 		case 5:
 			ph.searchEvent(input);
-			
 			break;
+			
 		case 6:
 			ph.printBy_firstName(input);
 			break;
+			
 		case 7:
 			ph.lnEvent.printAll();
 			break;
+			
 		case 8:
 			System.out.println("Goodbye!");
 			break;
+			
 			
 		default:
 			System.out.println("Choose a number from 1-8");
