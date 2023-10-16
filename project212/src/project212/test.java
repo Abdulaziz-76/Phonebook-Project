@@ -23,7 +23,7 @@ public class test {
 		System.out.println("8. Exit");
 		System.out.println("Enter your choice:");
 		
-		//try {
+		try {
 		 num = input.nextInt();
 		
 		
@@ -53,16 +53,16 @@ public class test {
 			ph.lnEvent.printAll();
 			break;
 		case 8:
-			
+			System.out.println("Goodbye!");
 			break;
 			
 		default:
 			System.out.println("Choose a number from 1-8");
 		}
-		//}catch(Exception x) {
-		//	System.err.println("only integers number from 1-8");
-		//	 input.nextLine();
-		//}
+		}catch(Exception x) {
+		System.err.println("only integers number from 1-8");
+			 input.nextLine();
+		}
 		}while(num!=8);
 		
 	}

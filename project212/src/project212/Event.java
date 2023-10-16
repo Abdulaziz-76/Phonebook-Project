@@ -56,7 +56,7 @@ public class Event implements Comparable<Event>{
 
 	@Override
 	public String toString() {
-		return "Event title:" + title + "\nContact name:"+contact.getContact_name() +"\nEvent date and time (MM/DD/YYYY HH:MM):"+ date_time+"\nEvent location:"+location;
+		return "\n\nEvent title:" + title + "\nContact name:"+contact.getContact_name() +"\nEvent date and time (MM/DD/YYYY HH:MM):"+ date_time+"\nEvent location:"+location;
 	}
 
 	public boolean comperDate(String date) {
@@ -72,13 +72,13 @@ public class Event implements Comparable<Event>{
 
 		return false;
 	}
-	public int compareTo(String r) {
-		return title.compareTo(title);
+
+	//@Override
+	public int compareTo(Event e) {
+		return title.compareToIgnoreCase(e.title);
+	
 	}
 	
-	public int compareTo(Event r) {
-		return 0;
-	}
 	
 
 }

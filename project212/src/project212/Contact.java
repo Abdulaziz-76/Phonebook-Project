@@ -91,19 +91,13 @@ public class Contact implements Comparable<Contact> {
 
 	
 
-	//public int compareTo(String s) {
-		
-	//	return contact_name.compareToIgnoreCase(s);
-
-	//}
-
 	public int compareTo(Contact r) {
-		return contact_name.compareTo(r.contact_name);
+		return contact_name.compareToIgnoreCase(r.contact_name);
 
 	}
 	@Override
 	public String toString() {
-		return "Name:" + contact_name + "\nPhone Number:"+phone_number +"\nEmail Address:"+ email+"\nAddress:"+ address+"\nBirthday:"+birthday+"\nNotes:"+notes;
+		return "\nName:" + contact_name + "\nPhone Number:"+phone_number +"\nEmail Address:"+ email+"\nAddress:"+ address+"\nBirthday:"+birthday+"\nNotes:"+notes;
 	}
 	
 	

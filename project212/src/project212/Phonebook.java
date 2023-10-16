@@ -23,13 +23,19 @@ public class Phonebook {
 		in.nextLine();
 		
 		do {
+			count = 0;
 			System.out.println("Enter the contact's name:");
 			input1 = in.nextLine();
 			
-			if (lnContact.search_NAME(input1) != null)
+			if (lnContact.search_NAME(input1) != null) {
 				System.out.println("Contact already exists");///////////////// Aziz == Az i z?
-			
-		} while (lnContact.search_NAME(input1) != null);
+				count=1;
+			}
+			if(input1.equals(" ")||input1.equals("")) {
+				System.out.println("Wrong input!");
+				count=1;
+			}
+		} while (count!=0);
 
 		do {
 			System.out.println("Enter the contact's phone number:");
@@ -77,20 +83,21 @@ public class Phonebook {
 		System.out.println("Contact added successfully!");
 
 	}
-
+	
 	public void search_Contact(Scanner in) {
-		System.out.println("Enter search criteria:");
-		System.out.println("1. Name");
-		System.out.println("2. Phone Number");
-		System.out.println("3. Email Address");
-		System.out.println("4. Address");
-		System.out.println("5. Birthday");
-		System.out.println("Enter your choice:");
-		int num = 0;
+		int num = 0;;
+		do {
+			System.out.println("Enter search criteria:");
+			System.out.println("1. Name");
+			System.out.println("2. Phone Number");
+			System.out.println("3. Email Address");
+			System.out.println("4. Address");
+			System.out.println("5. Birthday");
+			System.out.println("Enter your choice:");
 		try {
-
+			
 			num = in.nextInt();
-
+			
 			switch (num) {
 
 			case 1:
@@ -172,17 +179,30 @@ public class Phonebook {
 			System.err.println("only integers number from 1-5");
 			in.nextLine();
 		}
+		}while(num>5||num<1);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public void deleteContact() {
 		Scanner in = new Scanner(System.in);
 		System.out.println("contact name to delete");
-
 		String inputo = in.nextLine();
-		if (lnContact.delete(inputo)) {
+		Node<Contact> c =lnContact.search_NAME(inputo);
+		if (c!=null) {
+			lnContact.delete(c);
 			System.out.println("Successfully delete");
-
-		}
+			
+			while(lnEvent.search_Event_name(inputo)!=null)
+				lnEvent.delete(lnEvent.search_Event_name(inputo));
+					
+		    }
 
 		else
 			System.out.println("Not found");
@@ -297,7 +317,6 @@ public class Phonebook {
 				}
 
 				if (e2 != null) {
-					System.out.println("Event found!");
 					lnEvent.printByTitle(input2);
 				}
 				break;

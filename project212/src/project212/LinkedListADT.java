@@ -17,7 +17,7 @@ public class LinkedListADT<T extends Comparable<T>> {
 		return current.getNext() == null;
 	}
 
-	public boolean empty() {
+	public boolean isempty() {
 		return head == null;
 	}
 	
@@ -26,11 +26,11 @@ public class LinkedListADT<T extends Comparable<T>> {
 	
 	
 
-	public void insert(T d) {
-		Node<T> newNode = new Node<T>(d);
-		if (head == null)
+	public void insert(T val) {
+		Node<T> newNode = new Node<T>(val);
+		if (isempty())
 			head = newNode;
-
+		
 		else {
 			if (( head.getData()).compareTo( newNode.getData()) > 0) {
 				newNode.setNext(head);
@@ -39,10 +39,10 @@ public class LinkedListADT<T extends Comparable<T>> {
 			}
 
 			else {
-				Node<T> r = head;
-				while (r != null && (( r.getData()).compareTo( newNode.getData()) < 0)) {
-					current = r;
-					r = r.getNext();
+				Node<T> temp = head;
+				while (temp != null && (( temp.getData()).compareTo( newNode.getData()) < 0)) {
+					current = temp;
+					temp = temp.getNext();
 				}
 
 				newNode.setNext(current.getNext());
@@ -61,155 +61,156 @@ public class LinkedListADT<T extends Comparable<T>> {
 	
 	
 	public Node<T> search_NAME(String name) {
-		if (head == null)
+		if (isempty())
 			return null;
-		Node<T> r = head;
-		while (r!= null && ((Contact)r.getData()).getContact_name().compareTo(name)!=0) {
-			current=r;
-			r = r.getNext();
+		Node<T> temp = head;
+		while (temp!= null && ((Contact)temp.getData()).getContact_name().compareTo(name)!=0) {
+			current=temp;
+			temp = temp.getNext();
 		}
 		
-		return r;
+		return temp;
 	}
 	
 	public Node<T> search_PHONE(String number) {
-		if (head == null)
+		if (isempty())
 			return null;
-		Node<T> r = head;
-		while (r!= null && !((Contact)r.getData()).getPhone_number().equalsIgnoreCase(number)) {
-			current=r;
-			r = r.getNext();
+		Node<T> temp = head;
+		while (temp!= null && !((Contact)temp.getData()).getPhone_number().equalsIgnoreCase(number)) {
+			current=temp;
+			temp = temp.getNext();
 		}
 		
-		return r;
+		return temp;
 	}
 	public boolean search_EMAIL(String email) {
 		
-		if (head == null)
+		if (isempty())
 			return false;
-		Node<T> r = head;
-		while (r!= null) {
-			if(((Contact)r.getData()).getEmail().equalsIgnoreCase(email)) {
+		Node<T> temp = head;
+		while (temp!= null) {
+			if(((Contact)temp.getData()).getEmail().equalsIgnoreCase(email)) {
 				System.out.println("\nContact found!");
-				System.out.println(r.getData().toString());
+				System.out.println(temp.getData().toString());
 				
 			}
-			r = r.getNext();
+			temp = temp.getNext();
 		}
 		
-		return r==null;
+		return temp==null;
 	}
 	
 	public boolean search_ADDRES(String addres) {
 		int count=0;
-		if (head == null)
+		if (isempty())
 			return false;
-		Node<T> r = head;
-		while (r!= null) {
-			if(((Contact)r.getData()).getAddress().equalsIgnoreCase(addres)) {
+		Node<T> temp = head;
+		while (temp!= null) {
+			if(((Contact)temp.getData()).getAddress().equalsIgnoreCase(addres)) {
 				System.out.println("\nContact found!");
-				System.out.println(r.getData().toString());
+				System.out.println(temp.getData().toString());
 				count++;
 			}
-			r = r.getNext();
+			temp = temp.getNext();
 		}
 		
 		return count==0;
 	}
 	public boolean search_BIRTHDAY(String BTH) {
 		int count=0;
-		if (head == null)
+		if (isempty())
 			return false;
-		Node<T> r = head;
-		while (r!= null) {
-			if(((Contact)r.getData()).getBirthday().equalsIgnoreCase(BTH)) {
+		Node<T> temp = head;
+		while (temp!= null) {
+			if(((Contact)temp.getData()).getBirthday().equalsIgnoreCase(BTH)) {
 				System.out.println("\nContact found!");
-				System.out.println(r.getData().toString());
+				System.out.println(temp.getData().toString());
 				count++;
 			}
-			r = r.getNext();
+			temp = temp.getNext();
 		}
 		
 		return count==0;
 	}
 	
 	public Node<T> search_Event_name(String name) {
-		if(head==null)
+		if(isempty())
 			return null;
-		Node<T> r = head;
-			while(r!=null&&!(((Event)r.getData()).comperName(name))) {
-				current=r;
-			r = r.getNext();
+		Node<T> temp = head;
+			while(temp!=null&&!(((Event)temp.getData()).comperName(name))) {
+				current=temp;
+			temp = temp.getNext();
 			}
-		return r;
+		return temp;
 	}
 	
 	public Node<T> search_Event_date(String date) {
-		if(head==null)
+		if(isempty())
 			return null;
-		Node<T> r = head;
-			while(r!=null&&!(((Event)r.getData()).comperDate(date))) {
-				current=r;
-			r = r.getNext();
+		Node<T> temp = head;
+			while(temp!=null&&!(((Event)temp.getData()).comperDate(date))) {
+				current=temp;
+			temp = temp.getNext();
 			}
-		return r;
+		return temp;
 	}
 	
 	public Node<T> search_Event_title(String title) {
-		if(head==null)
+		if(isempty())
 			return null;
-		Node<T> r = head;
-			while(r!=null&&!(((Event)r.getData()).getTitle().equalsIgnoreCase(title))) {
-				current=r;
-			r = r.getNext();
+		Node<T> temp = head;
+			while(temp!=null&&!(((Event)temp.getData()).getTitle().equalsIgnoreCase(title))) {
+				current=temp;
+			temp = temp.getNext();
 			}
-		return r;
+		return temp;
 	}
 	
 	
 	
 	
-	public boolean delete(String name) {
-		Node<T> r =search_NAME(name);
-		if(r==head) {
-			head=null;
+	public boolean delete(Node n) {
+		
+		if(n==head) {
+			head=head.getNext();
 			return true;
-		}
-		if(r!=null) {
-			current.setNext(r.getNext());
-			r.setNext(null);
+			}
+		if(n!=null) {
+			current.setNext(n.getNext());
+			n.setNext(null);
 			return true;
 		}
 		return false;
 	
 	}
+	
 	public void printByName(String name) {
 		
-		if (head == null)
+		if (isempty())
 			System.out.println("There's no Event to this Contact");
-		Node<T> r = head;
-		while (r!= null) {
-			if(((Event)r.getData()).comperName(name)) {
+		Node<T> temp = head;
+		while (temp!= null) {
+			if(((Event)temp.getData()).comperName(name)) {
 				System.out.println("\nEvent found!");
-				System.out.println(r.getData().toString());
+				System.out.println(temp.getData().toString());
 			}
-				r = r.getNext();
+				temp = temp.getNext();
 			}
 			
 		}
-	
+		
 	public void printByTitle(String title) {
 		
-		if (head == null)
+		if (isempty())
 			System.out.println("There's no Event to this Contact");
-		Node<T> r = head;
-		while (r!= null) {
-			if(((Event)r.getData()).getTitle().equalsIgnoreCase(title)) {
+		Node<T> temp = head;
+		while (temp!= null) {
+			if(((Event)temp.getData()).getTitle().equalsIgnoreCase(title)) {
 				
 				System.out.println("\nEvent found!");
-				System.out.println(r.getData().toString());
+				System.out.println(temp.getData().toString());
 			}
-				r = r.getNext();
+				temp = temp.getNext();
 			}
 		
 		
@@ -227,26 +228,26 @@ public class LinkedListADT<T extends Comparable<T>> {
 	}
 	
 	public void printfirstName(String name) {
-		if (head == null)
+		if (isempty())
 			System.out.println("There's no Contact have this name");
-		Node<T> r = head;
-		while (r!= null) {
+		Node<T> temp = head;
+		while (temp!= null) {
 				int x=0;
 				String n="";
-				String s=((Contact)r.getData()).getContact_name();
+				String s=((Contact)temp.getData()).getContact_name();
 			
 				while(x<=s.length()-1 &&s.charAt(x)!=' ') {
 					n+=s.charAt(x++);
 				
 				if(n.equalsIgnoreCase(name)) {
 				System.out.println("\nEvent found!");
-				System.out.println(r.getData().toString());
+				System.out.println(temp.getData().toString());
 				
 				
 				}
 				
 				}
-				r = r.getNext();
+				temp = temp.getNext();
 		}
 	}
 	
