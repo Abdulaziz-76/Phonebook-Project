@@ -72,6 +72,7 @@ public class test {
 		}while(num!=8);
 		
 	}
+	//
 }
 	
 

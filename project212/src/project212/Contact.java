@@ -98,6 +98,8 @@ public class Contact implements Comparable<Contact> {
 		return "\nName:" + contact_name + "\nPhone Number:"+phone_number +"\nEmail Address:"+ email+"\nAddress:"+ address+"\nBirthday:"+birthday+"\nNotes:"+notes;
 	}
 	
+	//
+	
 	
 	
 }

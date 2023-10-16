@@ -250,8 +250,6 @@ public class Phonebook {
 	}
 	
 	
-	
-
 	public void searchEvent(Scanner in) {
 		System.out.println("Enter search criteria:");
 		System.out.println("1. contact name");
@@ -316,5 +314,5 @@ public class Phonebook {
 		
 		
 	}
-
+//
 }

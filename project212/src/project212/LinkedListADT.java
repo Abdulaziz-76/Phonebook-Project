@@ -241,7 +241,7 @@ public class LinkedListADT<T extends Comparable<T>> {
 				temp = temp.getNext();
 		}
 	}
-	
+	//
 }
 
 
