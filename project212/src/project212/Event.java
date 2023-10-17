@@ -1,8 +1,23 @@
 package project212;
 
-public class Event implements Comparable<Event>{
+/*
+CLASS: Event
+CSC212 Data structures - Project phase I
+Fall 2023
+EDIT DATE:
+10-17-2023
+TEAM:
+Abdalaziz Almutairi
+Ibrahim Althanyyan
+Abdullah Alomran
+AUTHORS:
+Abdalaziz Almutairi (443101720)
+Ibrahim Althanyyan  (443101693)
+Abdullah Alomran    (443100868)
+*/
+public class Event implements Comparable<Event> {
 	private String title;
-	private String date_time; //
+	private String date_time; 
 	private String location;
 	private Contact contact;
 
@@ -14,7 +29,6 @@ public class Event implements Comparable<Event>{
 		this.title = title;
 	}
 
-	
 	public Contact getContact() {
 		return contact;
 	}
@@ -56,7 +70,8 @@ public class Event implements Comparable<Event>{
 
 	@Override
 	public String toString() {
-		return "\n\nEvent title:" + title + "\nContact name:"+contact.getContact_name() +"\nEvent date and time (MM/DD/YYYY HH:MM):"+ date_time+"\nEvent location:"+location;
+		return "\n\nEvent title:" + title + "\nContact name:" + contact.getContact_name()
+				+ "\nEvent date and time (MM/DD/YYYY HH:MM):" + date_time + "\nEvent location:" + location;
 	}
 
 	public boolean comperDate(String date) {
@@ -73,13 +88,15 @@ public class Event implements Comparable<Event>{
 		return false;
 	}
 
-	//@Override
+	// @Override
 	public int compareTo(Event e) {
 		return title.compareToIgnoreCase(e.title);
-	
+
 	}
-	
-	
-	//
+
+	public int compareTo(String t) {
+		return title.compareToIgnoreCase(t);
+
+	}
 
 }
