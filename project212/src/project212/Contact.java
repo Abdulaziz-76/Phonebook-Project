@@ -1,6 +1,22 @@
 package project212;
 
 import java.util.Scanner;
+//o
+/*
+CLASS: Contact
+CSC212 Data structures - Project phase I
+Fall 2023
+EDIT DATE:
+10-17-2023
+TEAM:
+Abdalaziz Almutairi
+Ibrahim Althanyyan
+Abdullah Alomran
+AUTHORS:
+Abdalaziz Almutairi (443101720)
+Ibrahim Althanyyan  (443101693)
+Abdullah Alomran    (443100868)
+*/
 
 public class Contact implements Comparable<Contact> {
 
@@ -11,6 +27,7 @@ public class Contact implements Comparable<Contact> {
 	private String phone_number;
 	private String birthday;
 	
+	
 	public Contact(String contact_name, String phone_number, String email, String address, String birthday,
 			String notes) {
 
@@ -19,6 +36,7 @@ public class Contact implements Comparable<Contact> {
 		this.address = address;
 		this.notes = notes;
 		this.phone_number = phone_number;
+		
 		this.birthday = birthday;
 	}
 
@@ -30,6 +48,7 @@ public class Contact implements Comparable<Contact> {
 		this.address = c.address;
 		this.birthday = c.birthday;
 		this.notes = c.notes;
+
 	}
 	public Contact() {
 		this.contact_name = "";
@@ -89,6 +108,7 @@ public class Contact implements Comparable<Contact> {
 	}
 	
 
+	
 	public int compareTo(Contact r) {
 		return contact_name.compareToIgnoreCase(r.contact_name);
 
@@ -97,8 +117,6 @@ public class Contact implements Comparable<Contact> {
 	public String toString() {
 		return "\nName:" + contact_name + "\nPhone Number:"+phone_number +"\nEmail Address:"+ email+"\nAddress:"+ address+"\nBirthday:"+birthday+"\nNotes:"+notes;
 	}
-	
-	//
 	
 	
 	
