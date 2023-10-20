@@ -9,4 +9,5 @@ Also he can schedule events and appointments with contacts.
 
 
 # The project is under the supervision of Dr. Mohammed Alzaid.
+https://faculty.ksu.edu.sa/en/mohalzaid
 KSU up
