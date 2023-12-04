@@ -2,10 +2,10 @@ package project212;
 
 /*
 CLASS: Event
-CSC212 Data structures - Project phase I
+CSC212 Data structures - Project phase II
 Fall 2023
 EDIT DATE:
-10-17-2023
+11-03-2023
 TEAM:
 Abdalaziz Almutairi
 Ibrahim Althanyyan
@@ -19,7 +19,9 @@ public class Event implements Comparable<Event> {
 	private String title;
 	private String date_time; 
 	private String location;
-	private Contact contact;
+	public contactBST contacts ;
+	public String Type;
+	public int numContacts;
 
 	public String getTitle() {
 		return title;
@@ -27,14 +29,6 @@ public class Event implements Comparable<Event> {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public Contact getContact() {
-		return contact;
-	}
-
-	public void setContact(Contact contact) {
-		this.contact = contact;
 	}
 
 	public String getDate_time() {
@@ -53,25 +47,33 @@ public class Event implements Comparable<Event> {
 		this.location = location;
 	}
 
-	public Event(String title, String date_time, String location, Contact x) {
+	public Event(String title, String date_time, String location, String Type) {
 		this.title = title;
 		this.location = location;
 		this.date_time = date_time;
-		contact = x;
+		this.Type = Type;
+		contacts = new contactBST();
+		
 	}
 
 	public Event() {
+		contacts = new contactBST();
 		this.title = "";
-
+		this.Type = "";
 		this.date_time = "";
 		this.location = "";
-		contact = new Contact();
+	
 	}
 
 	@Override
 	public String toString() {
-		return "\n\nEvent title:" + title + "\nContact name:" + contact.getContact_name()
-				+ "\nEvent date and time (MM/DD/YYYY HH:MM):" + date_time + "\nEvent location:" + location;
+		System.out.println("\n\nEvent title:" + title); 
+		System.out.println("\nContacts details:" ); 
+		contacts.printContact(contacts.root);
+		System.out.println("\nEvent date and time (MM/DD/YYYY HH:MM):" + date_time);	
+		System.out.println("\nEvent location:" + location);
+		System.out.println("\nEvent Type: "+Type);
+		return ".";
 	}
 
 	public boolean comperDate(String date) {
@@ -81,14 +83,7 @@ public class Event implements Comparable<Event> {
 		return false;
 	}
 
-	public boolean comperName(String name) {
-		if (contact.getContact_name().equalsIgnoreCase(name))
-			return true;
-
-		return false;
-	}
-
-	// @Override
+	@Override
 	public int compareTo(Event e) {
 		return title.compareToIgnoreCase(e.title);
 
@@ -98,5 +93,26 @@ public class Event implements Comparable<Event> {
 		return title.compareToIgnoreCase(t);
 
 	}
+//	 public int comparing(Event event) {
+//	        if (this.title.toUpperCase().charAt(0) > event.title.toUpperCase().charAt(0))
+//	            return 1;
+//	        else if (this.title.toUpperCase().charAt(0) == event.title.toUpperCase().charAt(0)){
+//	            int limit;
+//	            if(!this.title.equalsIgnoreCase(event.title)) {
+//	                limit = Math.min(this.title.length(), event.title.length());
+//	                for (int i = 1; i < limit; i++) {
+//	                    if (this.title.toUpperCase().charAt(i) > event.title.toUpperCase().charAt(i)) {
+//	                        return 1;
+//	                    } else if (this.title.toUpperCase().charAt(i) < event.title.toUpperCase().charAt(i)) {
+//	                        return -1;
+//	                    }
+//	                }
+//	                if ( this.title.length() != event.title.length())
+//	                    return 2;
+//	            } return 0;
+//	        }else
+//	            return-1;
+//	    }
+	
 
 }

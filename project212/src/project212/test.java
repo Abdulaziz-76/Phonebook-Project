@@ -2,11 +2,11 @@ package project212;
 
 import java.util.Scanner;
 /*
-CLASS: Test
-CSC212 Data structures - Project phase I
+CLASS: test
+CSC212 Data structures - Project phase II
 Fall 2023
 EDIT DATE:
-10-17-2023
+11-03-2023
 TEAM:
 Abdalaziz Almutairi
 Ibrahim Althanyyan
@@ -23,36 +23,40 @@ public class test {
 		int choice = 0;// number of choice
 		Scanner input = new Scanner(System.in);
 		Phonebook ph = new Phonebook();
-		System.out.println("Welcome to the Linked Tree Phonebook!");
+		System.out.println("Welcome to the BST Phonebook!");
+		ph.addtest();
 		do {
 
 			try {
 				choice = ph.menu(input);
-
+				
 				switch (choice) {
 				case 1:
-					ph.add_contact(input);
+					ph.addContact(input);
 					break;
 				case 2:
-					ph.search_Contact(input);
+					ph.searchContact(input);
 					break;
 				case 3:
-					ph.deleteContact();
+					ph.deleteContact(input);
 
 					break;
 				case 4:
-					ph.Schedule(input);
+					ph.scheduleEORApp();
 
 					break;
 				case 5:
+					
 					ph.searchEvent(input);
-
+					input.nextLine();
 					break;
 				case 6:
-					ph.printBy_firstName(input);
+					
+					ph.printByFirstName(input);
+					
 					break;
 				case 7:
-					ph.lnEvent.printAll();
+					ph.printEventsAlphabetically();
 					break;
 				case 8:
 					System.out.println("Goodbye!");

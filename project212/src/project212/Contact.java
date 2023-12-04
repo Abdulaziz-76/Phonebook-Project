@@ -4,10 +4,10 @@ import java.util.Scanner;
 //o
 /*
 CLASS: Contact
-CSC212 Data structures - Project phase I
+CSC212 Data structures - Project phase II
 Fall 2023
 EDIT DATE:
-10-17-2023
+11-03-2023
 TEAM:
 Abdalaziz Almutairi
 Ibrahim Althanyyan
@@ -27,6 +27,8 @@ public class Contact implements Comparable<Contact> {
 	private String phone_number;
 	private String birthday;
 	
+	eventLinkedList scheduledEvents = new eventLinkedList();
+	
 	
 	public Contact(String contact_name, String phone_number, String email, String address, String birthday,
 			String notes) {
@@ -36,7 +38,6 @@ public class Contact implements Comparable<Contact> {
 		this.address = address;
 		this.notes = notes;
 		this.phone_number = phone_number;
-		
 		this.birthday = birthday;
 	}
 
@@ -108,11 +109,30 @@ public class Contact implements Comparable<Contact> {
 	}
 	
 
+	@Override
+	public int compareTo(Contact contact) {
+        if (this.phone_number.toUpperCase().charAt(0) > contact.getPhone_number().toUpperCase().charAt(0))
+            return 1;
+        else if (this.phone_number.toUpperCase().charAt(0) == contact.getPhone_number().toUpperCase().charAt(0)) {
+            int limit;
+            if (!this.phone_number.equalsIgnoreCase(contact.getPhone_number())) {
+                limit = Math.min(this.phone_number.length(), contact.getPhone_number().length());
+                for (int i = 1; i < limit; i++) {
+                    if (this.phone_number.toUpperCase().charAt(i) > contact.getPhone_number().toUpperCase().charAt(i)) {
+                        return 1;
+                    } else if (this.phone_number.toUpperCase().charAt(i) < contact.getPhone_number().toUpperCase().charAt(i)) {
+                        return -1;
+                    }
+                }
+                if (this.phone_number.length() != contact.getPhone_number().length())
+                    return 2;
+            }
+            return 0;
+        } else
+            return -1;
+    }
 	
-	public int compareTo(Contact r) {
-		return contact_name.compareToIgnoreCase(r.contact_name);
 
-	}
 	@Override
 	public String toString() {
 		return "\nName:" + contact_name + "\nPhone Number:"+phone_number +"\nEmail Address:"+ email+"\nAddress:"+ address+"\nBirthday:"+birthday+"\nNotes:"+notes;
